@@ -22,20 +22,24 @@ class TippingCalculatorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tipAmount.text = "$0.00"
+        totalBillAmount.text = "$0.00"
         
         
-    }
-    @IBAction func onPercentSelect(sender: UISegmentedControl) {
-      
-        
-        
-    }
-
-    @IBAction func onCalculatePressed(sender: AnyObject) {
     }
     
-    func calculateTip() -> String {
-        return "hello"
+    
+
+    @IBAction func onCalculatePressed(sender: AnyObject) {
+        var tipPercentages = [0.10, 0.15, 0.20]
+        var tipPercentage = tipPercentages[tipPercentSegments.selectedSegmentIndex]
+        var billAmount = (textField.text as NSString).doubleValue
+        var tip = billAmount * tipPercentage
+        var totalAmount = billAmount + tip
+        tipAmount.text = "$\(tip)"
+        totalBillAmount.text = "$\(totalAmount)"
     }
+    
+
 
 }
